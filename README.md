@@ -4,8 +4,8 @@ WhisperBot simplifies audio to text on Telegram. Convert voice to text, enhance 
 
 🔊 **Features:**
 
-- Audio Conversion: Turn various audio formats into WAV files for optimal processing.
-- Speech-to-Text: Use whisper.cpp library for accurate transcription.
+- Audio Conversion: Turn various audio formats into WAV files for optimal processing, using ffmpeg.
+- Speech-to-Text: Use [whisper.cpp](https://github.com/ggerganov/whisper.cpp) library for accurate transcription.
 - Telegram Integration: Seamless audio processing within your chats.
 - Privacy Priority: Process audio files locally for security.
 
