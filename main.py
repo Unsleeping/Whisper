@@ -1,12 +1,7 @@
 import mimetypes
 import subprocess
 from utils import remove, get_sample_rate
-from config import (wav_file_name,
-                    get_whisper_args,
-                    get_ffmpeg_args_to_wav,
-                    get_ffmpeg_args_to_16khz,
-                    target_sample_rate,
-                    converted_file_name)
+from worker import *
 
 
 def convert_to_16khz(input_file, output_file):

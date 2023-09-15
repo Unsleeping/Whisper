@@ -1,12 +1,11 @@
-import config
 import os
 import re
 import telebot
 import random
 import wave
-from config import output_name
+from uns_config import output_name, queued_stickers, get_queued_message
 
-bot = telebot.TeleBot(config.token)
+bot = telebot.TeleBot(os.environ.get('token'))
 queued = False
 
 
@@ -32,12 +31,12 @@ def send_result(chat_id, log):
     if result:
         log('Sending recognised text', is_user=True)
         bot.send_document(chat_id, result)
-        remove(config.output_name, f'remove recognised text {config.output_name}')
+        remove(output_name, f'remove recognised text {output_name}')
 
 
 def queued_fallback(chat_id):
-    bot.send_message(chat_id, config.get_queued_message())
-    bot.send_sticker(chat_id, random.choice(config.queued_stickers))
+    bot.send_message(chat_id, get_queued_message())
+    bot.send_sticker(chat_id, random.choice(queued_stickers))
 
 
 def get_chat_id(message):
