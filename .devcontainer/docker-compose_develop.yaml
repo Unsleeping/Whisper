@@ -10,10 +10,7 @@ services:
         USER_PASSWORD: ${USER_PASSWORD}
         USER_NAME: ${USER_NAME}
         DEV_FOLDER: ${DEV_FOLDER}
-        #Uncomment if unused vscode
-        # GIT_USER: ${GIT_USER}
-        # GIT_EMAIL: ${GIT_EMAIL}
-    env_file: 
+    env_file:
      - .env
      - .env-secrets
     #  - .devcontainer/.env_secret

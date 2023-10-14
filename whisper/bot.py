@@ -1,9 +1,10 @@
 import random
 
 import gdown
-from .main import recognise_from_file, recognise_from_gdrive
 from telebot import types
 from telebot.apihelper import ApiTelegramException
+
+from .main import recognise_from_file, recognise_from_gdrive
 from .uns_config import *
 from .utils import (
     bot,
@@ -13,10 +14,10 @@ from .utils import (
     get_logger,
     is_file_size_limit_exceeded,
     is_gdrive_link,
+    queued,
     queued_fallback,
     reply_to_user,
     send_result,
-    queued
 )
 
 
@@ -103,6 +104,3 @@ def add_audio(message):
             bot.send_sticker(chat_id, random.choice(error_stickers))
 
     start_worker(worker, lambda: queued_fallback(chat_id))
-
-
-

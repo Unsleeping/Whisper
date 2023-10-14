@@ -34,11 +34,11 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"ms-python.python",
 				"njpwerner.autodocstring",
 				"ms-toolsai.jupyter",
 				"ms-python.black-formatter",
 				"ms-python.pylint",
-				"ms-python.python",
 				"eamodio.gitlens",
 				"tamasfe.even-better-toml",
 				"mhutchie.git-graph"

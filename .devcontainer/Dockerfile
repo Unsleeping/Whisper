@@ -27,15 +27,11 @@ WORKDIR /home/${USER_NAME}
 RUN mkdir ${DEV_FOLDER}
 WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
 COPY requirements.txt .
-RUN pip3 install --upgrade pip && pip3 install -r requirements.txt isort black pylint mypy
+RUN pip3 install --upgrade pip && pip3 install -r requirements.txt pre-commit isort black pylint mypy
 
 
 USER ${USER_NAME}
 COPY . ${DEV_FOLDER}
 WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
-
-# COPY requirements.txt .
-# RUN pip3 install --upgrade pip && pip3 install -r requirements.txt pre-commit isort black pylint mypy
-# COPY . .
 
 USER root
