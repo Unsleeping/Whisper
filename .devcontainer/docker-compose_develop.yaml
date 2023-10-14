@@ -1,6 +1,6 @@
 version: '3'
 services:
-  python_base:
+  whisper:
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile
@@ -15,6 +15,7 @@ services:
         # GIT_EMAIL: ${GIT_EMAIL}
     env_file: 
      - .env
+     - .env-secrets
     #  - .devcontainer/.env_secret
     volumes:
       - .:/home/${USER_NAME}/$DEV_FOLDER:cached

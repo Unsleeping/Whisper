@@ -1,4 +1,4 @@
-FROM python:3.9.18-slim
+FROM python:3.9
 
 #set environment variables
 ARG UID
@@ -25,6 +25,10 @@ RUN usermod -u ${UID} ${USER_NAME} \
 USER ${USER_NAME}
 WORKDIR /home/${USER_NAME}
 RUN mkdir ${DEV_FOLDER}
+WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
+COPY requirements.txt .
+RUN pip3 install --upgrade pip && pip3 install -r requirements.txt isort black pylint mypy
+
 
 USER ${USER_NAME}
 COPY . ${DEV_FOLDER}

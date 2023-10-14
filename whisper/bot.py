@@ -1,12 +1,11 @@
 import random
 
 import gdown
-import utils
-from main import recognise_from_file, recognise_from_gdrive
+from .main import recognise_from_file, recognise_from_gdrive
 from telebot import types
 from telebot.apihelper import ApiTelegramException
-from uns_config import *
-from utils import (
+from .uns_config import *
+from .utils import (
     bot,
     get_chat_id,
     get_downloadable_url,
@@ -17,16 +16,17 @@ from utils import (
     queued_fallback,
     reply_to_user,
     send_result,
+    queued
 )
 
 
 def start_worker(callback, fallback):
-    if utils.queued:
+    if queued:
         fallback()
 
-    utils.queued = True
+    queued = True
     callback()
-    utils.queued = False
+    queued = False
 
 
 @bot.message_handler(commands=["start", "Start"])
@@ -105,5 +105,4 @@ def add_audio(message):
     start_worker(worker, lambda: queued_fallback(chat_id))
 
 
-if __name__ == "__main__":
-    bot.polling(none_stop=True)
+

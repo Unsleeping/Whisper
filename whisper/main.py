@@ -1,8 +1,8 @@
 import mimetypes
 import subprocess
 
-from utils import get_sample_rate, remove
-from worker import *
+from .utils import get_sample_rate, remove
+from .worker import *
 
 
 def convert_to_16khz(input_file, output_file):
@@ -57,4 +57,4 @@ def recognise_from_file(audio, file, log):
 
 
 def recognise_from_gdrive(name, log):
-    return recognise(mimetypes.guess_type(name)[0], name, log)
+    return recorecognise_from_filegnise(mimetypes.guess_type(name)[0], name, log)

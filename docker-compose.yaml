@@ -3,7 +3,7 @@
 
 #added anothers services
 services:
-  python_base:
+  whisper:
     build:
         context: .
     command: /bin/sh -c "while sleep 1000; do :; done"
