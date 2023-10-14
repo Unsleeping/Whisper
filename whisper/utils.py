@@ -4,7 +4,6 @@ import re
 import wave
 
 import telebot
-
 from uns_config import get_queued_message, output_name, queued_stickers
 
 bot = telebot.TeleBot(os.environ.get("token"))

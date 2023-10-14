@@ -1,11 +1,10 @@
 import random
 
 import gdown
-from telebot import types
-from telebot.apihelper import ApiTelegramException
-
 import utils
 from main import recognise_from_file, recognise_from_gdrive
+from telebot import types
+from telebot.apihelper import ApiTelegramException
 from uns_config import *
 from utils import (
     bot,
