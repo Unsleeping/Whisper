@@ -51,9 +51,9 @@
 				"mhutchie.git-graph"
 			]
 		}
-	},
-	"[python]": {
-		"editor.defaultFormatter": "ms-python.black-formatter",
-		"editor.formatOnSave": true
 	}
+	// "[python]": {
+	// 	"editor.defaultFormatter": "ms-python.black-formatter",
+	// 	"editor.formatOnSave": true
+	// }
 }

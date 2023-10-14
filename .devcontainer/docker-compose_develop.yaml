@@ -10,7 +10,10 @@ services:
         USER_PASSWORD: ${USER_PASSWORD}
         USER_NAME: ${USER_NAME}
         DEV_FOLDER: ${DEV_FOLDER}
-    env_file:
+        #Uncomment if unused vscode
+        # GIT_USER: ${GIT_USER}
+        # GIT_EMAIL: ${GIT_EMAIL}
+    env_file: 
      - .env
     #  - .devcontainer/.env_secret
     volumes:
@@ -20,6 +23,4 @@ services:
       - SYS_PTRACE
     security_opt:
       - seccomp:unconfined
-
-    #Uncomment if used vscode
     command: /bin/sh -c "while sleep 1000; do :; done"

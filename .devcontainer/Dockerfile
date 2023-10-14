@@ -25,17 +25,13 @@ RUN usermod -u ${UID} ${USER_NAME} \
 USER ${USER_NAME}
 WORKDIR /home/${USER_NAME}
 RUN mkdir ${DEV_FOLDER}
-COPY requirements.txt .
-RUN pip3 install --upgrade pip && pip3 install -r requirements.txt pre-commit isort black pylint mypy
-
-#add  python user features
-RUN curl -sSL https://install.python-poetry.org | python3 -
-RUN echo "export PATH="/home/${USER_NAME}/.local/bin:$PATH"" >> .bashrc
-USER root
-RUN /home/${USER_NAME}/.local/bin/poetry completions bash >> /usr/share/bash-completion/completions/poetry
 
 USER ${USER_NAME}
 COPY . ${DEV_FOLDER}
 WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
+
+# COPY requirements.txt .
+# RUN pip3 install --upgrade pip && pip3 install -r requirements.txt pre-commit isort black pylint mypy
+# COPY . .
 
 USER root
