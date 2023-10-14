@@ -14,11 +14,12 @@ from .utils import (
     get_logger,
     is_file_size_limit_exceeded,
     is_gdrive_link,
-    queued,
     queued_fallback,
     reply_to_user,
     send_result,
 )
+
+queued = False
 
 
 def start_worker(callback, fallback):

@@ -8,7 +8,6 @@ import telebot
 from .uns_config import get_queued_message, output_name, queued_stickers
 
 bot = telebot.TeleBot(os.environ.get("BOT_TOKEN"))
-queued = False
 
 
 def get_sample_rate(wav_file):
