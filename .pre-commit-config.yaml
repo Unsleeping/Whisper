@@ -1,0 +1,27 @@
+repos:
+- repo: https://gitlab.com/bmares/check-json5
+  rev: v1.0.0
+  hooks:
+  - id: check-json5
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+  hooks:
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  - id: check-merge-conflict
+  - id: check-docstring-first
+  - id: check-yaml
+    args: [--unsafe]
+  - id: debug-statements
+  - id: end-of-file-fixer
+  - id: name-tests-test
+  - id: requirements-txt-fixer
+  - id: trailing-whitespace
+- repo: https://github.com/pycqa/isort
+  rev: 5.12.0
+  hooks:
+  - id: isort
+- repo: https://github.com/psf/black
+  rev: 23.9.1
+  hooks:
+  - id: black

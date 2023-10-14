@@ -26,7 +26,7 @@ USER ${USER_NAME}
 WORKDIR /home/${USER_NAME}
 RUN mkdir ${DEV_FOLDER}
 COPY requirements.txt .
-RUN pip3 install --upgrade pip && pip3 install -r requirements.txt 
+RUN pip3 install --upgrade pip && pip3 install -r requirements.txt pre-commit isort black pylint mypy
 
 #add  python user features
 RUN curl -sSL https://install.python-poetry.org | python3 -

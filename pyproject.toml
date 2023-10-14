@@ -1,0 +1,35 @@
+[tool.black]
+line-length=120
+target-version=['py39']
+exclude= '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | venv
+)/
+'''
+
+[tool.isort]
+skip=['.gitignore', '.dockerignore', 'venv', '.gitlab-ci.yaml']
+profile='black'
+
+[tool.mypy]
+exclude='data_service/temp'
+python_version = '3.9'
+pretty = true
+ignore_missing_imports = true
+disable_error_code = ['var-annotated', 'has-type', 'operator', 'arg-type']
+
+[tool.pylint]
+recursive=true
+max-line-length=120
+disable=['C0114','R0913', 'R0912','E0401','C0104']
+fail-under=8
