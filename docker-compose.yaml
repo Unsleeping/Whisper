@@ -1,0 +1,9 @@
+#This compose for production
+'version': '3'
+
+#added anothers services
+services:
+  python_base:
+    build:
+        context: .
+    command: /bin/sh -c "while sleep 1000; do :; done"

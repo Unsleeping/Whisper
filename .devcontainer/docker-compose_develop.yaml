@@ -1,0 +1,26 @@
+version: '3'
+services:
+  python_base:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
+        USER_PASSWORD: ${USER_PASSWORD}
+        USER_NAME: ${USER_NAME}
+        DEV_FOLDER: ${DEV_FOLDER}
+    env_file: 
+     - .env
+    #  - .devcontainer/.env_secret
+    volumes:
+      - .:/home/${USER_NAME}/$DEV_FOLDER:cached
+
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+
+    #Uncomment if used vscode
+    command: /bin/sh -c "while sleep 1000; do :; done"
+ 
