@@ -16,3 +16,15 @@ WhisperBot simplifies audio to text on Telegram. Convert voice to text, enhance 
 - Automation: Streamline tasks by automating time-consuming transcriptions.
 
 🌟 Elevate your audio experience with WhisperBot. Convert audio to text effortlessly, enhance accessibility, and streamline your Telegram workflows!
+
+
+# How to run 
+
+If you don't run on mac with arch chips, you should remove `UNAME_M=arm64 UNAME_P=arm LLAMA_NO_METAL=1` before `make` command from all dockerfile
+
+
+Then add .env-secrets with BOT_TOKEN=<your_telegram_bot_token>
+
+and finally: 
+
+    docker-compose up --build -d
