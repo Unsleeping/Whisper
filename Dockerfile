@@ -8,8 +8,10 @@ RUN apt-get update \
 
 WORKDIR /root/code
 
-RUN git clone https://github.com/ggerganov/whisper.cpp whisper.cpp/ --depth 1
-RUN cd whisper.cpp/ && UNAME_M=arm64 UNAME_P=arm LLAMA_NO_METAL=1 make large
+RUN git clone https://github.com/ggerganov/whisper.cpp whisper.cpp/
+RUN cd whisper.cpp/  \
+    && bash ./models/download-ggml-model.sh base \
+    && UNAME_M=arm64 UNAME_P=arm LLAMA_NO_METAL=1 make
 
 COPY requirements.txt .
 RUN pip3 install --upgrade pip && pip3 install -r requirements.txt

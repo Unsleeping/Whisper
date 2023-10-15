@@ -33,7 +33,7 @@ WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
 # install whisper.cpp
 RUN git clone https://github.com/ggerganov/whisper.cpp whisper.cpp/
 WORKDIR /home/${USER_NAME}/${DEV_FOLDER}/whisper.cpp
-RUN bash ./models/download-ggml-model.sh large \
+RUN bash ./models/download-ggml-model.sh base \
     && UNAME_M=arm64 UNAME_P=arm LLAMA_NO_METAL=1 make
 
 
