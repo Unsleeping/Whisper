@@ -23,18 +23,23 @@ WORKDIR /root
 RUN groupadd -r ${USER_NAME} && useradd -m -s /bin/bash -g ${USER_NAME} ${USER_NAME} -G adm,cdrom,sudo
 RUN echo ${USER_NAME}:${USER_PASSWORD} | chpasswd
 RUN usermod -u ${UID} ${USER_NAME} \
-  && groupmod -g ${GID} ${USER_NAME}
+    && groupmod -g ${GID} ${USER_NAME}
 
 USER ${USER_NAME}
 WORKDIR /home/${USER_NAME}
 RUN mkdir ${DEV_FOLDER}
 WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
-COPY requirements.txt .
-RUN pip3 install --upgrade pip && pip3 install -r requirements.txt pre-commit isort black pylint mypy
 
 # install whisper.cpp
-RUN git clone https://github.com/ggerganov/whisper.cpp whisper.cpp/ --depth 1
-RUN cd whisper.cpp/ && UNAME_M=arm64 UNAME_P=arm LLAMA_NO_METAL=1 make large
+RUN git clone https://github.com/ggerganov/whisper.cpp whisper.cpp/
+WORKDIR /home/${USER_NAME}/${DEV_FOLDER}/whisper.cpp
+RUN bash ./models/download-ggml-model.sh large \
+    && UNAME_M=arm64 UNAME_P=arm LLAMA_NO_METAL=1 make
+
+
+WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
+COPY requirements.txt .
+RUN pip3 install --upgrade pip && pip3 install -r requirements.txt pre-commit isort black pylint mypy
 
 COPY . .
 
