@@ -7,5 +7,5 @@ services:
     build:
       context: .
     command: python .
-    env:
+    env_file:
       - .env-secrets

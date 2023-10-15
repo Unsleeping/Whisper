@@ -32,12 +32,10 @@ WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
 COPY requirements.txt .
 RUN pip3 install --upgrade pip && pip3 install -r requirements.txt pre-commit isort black pylint mypy
 
-
-USER ${USER_NAME}
-COPY . ${DEV_FOLDER}
-WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
-
+# install whisper.cpp
 RUN git clone https://github.com/ggerganov/whisper.cpp whisper.cpp/ --depth 1
 RUN cd whisper.cpp/ && UNAME_M=arm64 UNAME_P=arm LLAMA_NO_METAL=1 make large
+
+COPY . .
 
 USER root

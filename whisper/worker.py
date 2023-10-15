@@ -6,7 +6,7 @@ output_file_name_without_extension = "output"
 path_to_whisper = "./whisper.cpp/"
 path_to_main = path_to_whisper + "main"
 path_to_models = path_to_whisper + "models/"
-large_model = path_to_models + "ggml-large.bin"
+large_model = path_to_models + "ggml-base.en.bin"
 
 
 def get_ffmpeg_args_to_16khz(i_file_name, o_file_name):
