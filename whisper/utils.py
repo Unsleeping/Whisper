@@ -1,16 +1,17 @@
 import os
-import re
-import telebot
 import random
+import re
 import wave
-from uns_config import output_name, queued_stickers, get_queued_message
 
-bot = telebot.TeleBot(os.environ.get('token'))
-queued = False
+import telebot
+
+from .uns_config import get_queued_message, output_name, queued_stickers
+
+bot = telebot.TeleBot(os.environ.get("BOT_TOKEN"))
 
 
 def get_sample_rate(wav_file):
-    with wave.open(wav_file, 'rb') as wf:
+    with wave.open(wav_file, "rb") as wf:
         return wf.getframerate()
 
 
@@ -29,9 +30,9 @@ def get_result():
 def send_result(chat_id, log):
     result = get_result()
     if result:
-        log('Sending recognised text', is_user=True)
+        log("Sending recognised text", is_user=True)
         bot.send_document(chat_id, result)
-        remove(output_name, f'remove recognised text {output_name}')
+        remove(output_name, f"remove recognised text {output_name}")
 
 
 def queued_fallback(chat_id):
@@ -52,8 +53,9 @@ def is_file_size_limit_exceeded(error):
 
 
 def get_downloadable_url(url):
-    return re.sub(r"https://drive\.google\.com/file/d/(.*?)/.*?\?usp=sharing",
-                  r"https://drive.google.com/uc?id=\1", url)
+    return re.sub(
+        r"https://drive\.google\.com/file/d/(.*?)/.*?\?usp=sharing", r"https://drive.google.com/uc?id=\1", url
+    )
 
 
 def get_introducing(user_name, bot_name):
@@ -61,7 +63,7 @@ def get_introducing(user_name, bot_name):
 
 
 def console_log(message):
-    print(f'>> {message}')
+    print(f">> {message}")
 
 
 def get_logger(reply):
@@ -74,8 +76,8 @@ def get_logger(reply):
     return log
 
 
-def remove(file_name, reason=''):
+def remove(file_name, reason=""):
     if os.path.exists(file_name):
-        if reason != '':
+        if reason != "":
             console_log(reason)
         os.remove(file_name)

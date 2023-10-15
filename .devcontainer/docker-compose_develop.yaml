@@ -1,0 +1,24 @@
+version: '3'
+services:
+  whisper:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
+        USER_PASSWORD: ${USER_PASSWORD}
+        USER_NAME: ${USER_NAME}
+        DEV_FOLDER: ${DEV_FOLDER}
+    env_file:
+     - .env
+     - .env-secrets
+    #  - .devcontainer/.env_secret
+    volumes:
+      - .:/home/${USER_NAME}/$DEV_FOLDER:cached
+
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    command: /bin/sh -c "while sleep 1000; do :; done"

@@ -1,0 +1,12 @@
+#This compose for production
+'version': '3'
+
+#added anothers services
+services:
+  whisper:
+    build:
+      context: .
+    command: python .
+    # command: /bin/sh -c "while sleep 1000; do :; done"
+    env_file:
+      - .env-secrets

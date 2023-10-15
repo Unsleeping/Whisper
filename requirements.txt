@@ -1,6 +1,6 @@
-pip~=23.2.1
-wheel~=0.37.0
-setuptools~=68.1.2
 future~=0.18.2
 gdown~=4.7.1
+pip~=23.2.1
+setuptools~=68.1.2
 telebot~=0.0.5
+wheel~=0.37.0
