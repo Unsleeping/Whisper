@@ -3,7 +3,7 @@ converted_file_name = "output_16kHz.wav"
 wav_file_name = "out.wav"
 output_file_name_without_extension = "output"
 
-path_to_whisper = "whisper.cpp/"
+path_to_whisper = "./whisper.cpp/"
 path_to_main = path_to_whisper + "main"
 path_to_models = path_to_whisper + "models/"
 large_model = path_to_models + "ggml-large.bin"

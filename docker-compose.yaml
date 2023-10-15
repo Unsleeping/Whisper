@@ -5,5 +5,7 @@
 services:
   whisper:
     build:
-        context: .
-    command: /bin/sh -c "while sleep 1000; do :; done"
+      context: .
+    command: python .
+    env:
+      - .env-secrets

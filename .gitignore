@@ -2,3 +2,4 @@ config.py
 __pycache__
 .env-secrets
 .vscode
+whisper.cpp

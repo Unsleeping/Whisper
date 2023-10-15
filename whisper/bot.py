@@ -23,6 +23,7 @@ queued = False
 
 
 def start_worker(callback, fallback):
+    global queued
     if queued:
         fallback()
 

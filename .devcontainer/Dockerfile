@@ -1,4 +1,5 @@
 FROM python:3.9
+# FROM pyhton:3.9.18-alpine3.18
 
 #set environment variables
 ARG UID
@@ -9,7 +10,9 @@ ARG DEV_FOLDER
 ARG GIT_USER
 ARG GIT_EMAIL
 
-RUN apt-get update && apt-get install -y vim sudo bash-completion tmux
+RUN apt-get update \
+  && apt-get -y upgrade \
+  && apt-get install -y vim sudo bash-completion tmux ffmpeg make g++ cmake gcc
 
 WORKDIR /root
 # Install own utility
@@ -33,5 +36,8 @@ RUN pip3 install --upgrade pip && pip3 install -r requirements.txt pre-commit is
 USER ${USER_NAME}
 COPY . ${DEV_FOLDER}
 WORKDIR /home/${USER_NAME}/${DEV_FOLDER}
+
+RUN git clone https://github.com/ggerganov/whisper.cpp whisper.cpp/ --depth 1
+RUN cd whisper.cpp/ && UNAME_M=arm64 UNAME_P=arm LLAMA_NO_METAL=1 make large
 
 USER root
